@@ -45,7 +45,7 @@ function testInsertDocumnet(docs){
         client.connect((err, client) => {
             const db = client.db("mydb");
             // collection 객체에 접근
-            db.collection("friends").insertOne((err, result) => {
+            db.collection("friends").insertOne(docs, (err, result) => {
                 if(err){
                     console.error(err);
                 } else{
@@ -57,14 +57,14 @@ function testInsertDocumnet(docs){
     }
 }
 // testInsertDocumnet({ name:"전우치", job:"도사"});
-testInsertDocumnet([
-    {name: "고길동", gender: "남성", species: "인간", age: 50},
-    {name: "둘리", gender: "남성", species: "공룡", age: 1000000},
-    {name: "도우너", gender: "남성", species: "외계인", age: 15},
-    {name: "또치", gender:"여성", species:"조류", age: 13},
-    {name: "마이콜", gender:"남성", species:"인간", age:25},
-    {name: "봉미선", gender:"여성", species:"인간", age:35}
-]); // 문서의 배열 -> insertMany
+// testInsertDocumnet([
+//     {name: "고길동", gender: "남성", species: "인간", age: 50},
+//     {name: "둘리", gender: "남성", species: "공룡", age: 1000000},
+//     {name: "도우너", gender: "남성", species: "외계인", age: 15},
+//     {name: "또치", gender:"여성", species:"조류", age: 13},
+//     {name: "마이콜", gender:"남성", species:"인간", age:25},
+//     {name: "봉미선", gender:"여성", species:"인간", age:35}
+// ]); // 문서의 배열 -> insertMany
 
 function testDeleteAll(){
     // db.collection.delete() : 전체삭제
